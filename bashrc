@@ -12,3 +12,8 @@ set -o vi
 
 # Needed for lightline, vim colors and other pretty things
 export TERM=xterm-256color
+
+# Nice diff
+function nd() {
+    git diff $@ | vim -R -
+}
