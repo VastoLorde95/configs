@@ -112,3 +112,4 @@ set backspace=indent,eol,start
 
 " fzf
 set rtp+=~/.fzf
+nnoremap <leader>f :FZF<CR>
