@@ -6,6 +6,7 @@ Plug 'itchyny/lightline.vim'
 Plug 'preservim/nerdcommenter'
 Plug 'python-mode/python-mode'
 Plug 'flazz/vim-colorschemes'
+Plug 'junegunn/fzf'
 
 call plug#end()
 
@@ -108,3 +109,6 @@ hi Normal ctermfg=white
 
 set cursorline
 set backspace=indent,eol,start
+
+" fzf
+set rtp+=~/.fzf

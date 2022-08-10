@@ -17,3 +17,6 @@ export TERM=xterm-256color
 function nd() {
     git diff $@ | vim -R -
 }
+
+# Auto generated from fzf
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
