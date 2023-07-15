@@ -12,6 +12,12 @@ success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set
 truncation_length = 3
 truncate_to_repo = false
 
+[battery]
+disabled = true
+
+[git_status]
+disabled = true
+
 # Disable the package module, hiding it from the prompt completely
 [package]
 disabled = true
