@@ -1,0 +1,8 @@
+set editing-mode vi
+
+set show-mode-in-prompt on
+
+# Disable visual mode
+set keymap vi-command
+v: ""
+
