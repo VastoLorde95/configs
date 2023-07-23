@@ -1,8 +1,11 @@
 set editing-mode vi
-
+set keymap vi
 set show-mode-in-prompt on
+set keyseq-timeout 100
 
 # Disable visual mode
 set keymap vi-command
 v: ""
 
+set vi-ins-mode-string "INS ∫ "
+set vi-cmd-mode-string "CMD ⌘ "
