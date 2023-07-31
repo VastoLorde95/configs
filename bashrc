@@ -19,5 +19,12 @@ function nd() {
     git diff $@ | vim -R -
 }
 
-# Auto generated from fzf
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+# FZF
+source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/bash-completion/completions/fzf
+
+export FZF_ALT_C_OPTS="--preview 'echo {}' --preview-window down:5:hidden:wrap --bind '?:toggle-preview'"
+export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:5:hidden:wrap --bind '?:toggle-preview'"
+export FZF_DEFAULT_OPTS="--height=20% --layout=reverse --info=inline"
+FZF_CTRL_R_EDIT_KEY=ctrl-e
+FZF_CTRL_R_EXEC_KEY=enter
