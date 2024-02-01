@@ -1,6 +1,10 @@
 # Enable vim key bindings
 set -o vi
 
+# aliases
+alias vim=nvim
+alias rl='readlink -f'
+
 # Needed for lightline, vim colors and other pretty things
 export TERM=xterm-256color
 export LC_ALL="en_US.UTF-8"
