@@ -1,3 +1,17 @@
+# hello pathmunge
+pathmunge () {
+    if ! echo $PATH | /bin/egrep -q "(^|:)$1($|:)" ; then
+        if [ "$2" = "after" ] ; then
+            PATH=$PATH:$1
+        else
+            PATH=$1:$PATH
+        fi
+    fi
+}
+
+# munge some paths
+pathmunge "~/bin"
+
 # Enable vim key bindings
 set -o vi
 
@@ -23,3 +37,6 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:5:hidden:wrap 
 export FZF_DEFAULT_OPTS="--height=20% --layout=reverse --info=inline"
 FZF_CTRL_R_EDIT_KEY=ctrl-e
 FZF_CTRL_R_EXEC_KEY=enter
+
+# bye bye pathmunge
+unset pathmunge    
