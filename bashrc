@@ -12,6 +12,9 @@ pathmunge () {
 # munge some paths
 pathmunge "~/bin"
 
+# Set editor
+export EDITOR=nvim
+
 # Enable vim key bindings
 set -o vi
 
