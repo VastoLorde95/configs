@@ -23,13 +23,37 @@ alias vim=nvim
 alias rl='readlink -f'
 
 # Needed for lightline, vim colors and other pretty things
-export TERM=xterm-256color
-export LC_ALL="en_US.UTF-8"
+#export TERM=xterm-256color
+#export LC_ALL="en_US.UTF-8"
 
 # Nice diff
 function nd() {
     git diff $@ | vim -R -
 }
+
+# fuzzy tmux
+function t() {
+    tmux a -t "$(tmux ls | awk -F ":" '{print $1}' | fzf)"
+}
+
+# switch git branch
+function gb() {
+    git checkout "$(git branch | fzf | xargs)"
+}
+
+# git status
+function gs() {
+    git status
+}
+
+function gpo() {
+    git push -u origin "$(git branch --show-current)"
+}
+
+function squash() {
+    git reset "$(git merge-base main $(git branch --show-current))"
+}
+
 
 # FZF
 source /usr/share/doc/fzf/examples/key-bindings.bash
