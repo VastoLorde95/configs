@@ -59,7 +59,7 @@ function squash() {
 source /usr/share/doc/fzf/examples/key-bindings.bash
 source /usr/share/bash-completion/completions/fzf
 
-export FZF_ALT_C_COMMAND='fd --type d --strip-cwd-prefix'
+export FZF_ALT_C_COMMAND='fdfind --type d --strip-cwd-prefix'
 export FZF_ALT_C_OPTS="--preview 'echo {}' --preview-window down:5:hidden:wrap --bind '?:toggle-preview'"
 export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:5:hidden:wrap --bind '?:toggle-preview'"
 export FZF_DEFAULT_OPTS="--height=20% --layout=reverse --info=inline"
