@@ -54,6 +54,10 @@ function squash() {
     git reset "$(git merge-base main $(git branch --show-current))"
 }
 
+function pqview() {
+    ipython -i -c "import pandas as pd; df = pd.read_parquet(\"$1\"); print(df.dtypes); print(df.head())";
+}
+
 
 # FZF
 source /usr/share/doc/fzf/examples/key-bindings.bash
