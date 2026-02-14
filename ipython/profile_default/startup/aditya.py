@@ -7,7 +7,6 @@ import glob
 
 import numpy as np
 import pandas as pd
-from bs4 import BeautifulSoup
 
 from IPython.core.magic import Magics, magics_class, line_magic
 
@@ -103,6 +102,7 @@ class CustomMagics(Magics):
         """
         %read_soup var_name {fname} - Select a file using fzf and store its content in the variable 'var_name'. If fname is provided, will read from fname instead
         """
+        from bs4 import BeautifulSoup
         var_name, fname = self._var_and_file(args)
         self._read_file(var_name, fname)
         self.shell.user_ns[var_name] = BeautifulSoup(self.shell.user_ns[var_name])
