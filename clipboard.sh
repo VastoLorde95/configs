@@ -3,7 +3,24 @@
 # Takes the output of the last command that you ran inside tmux and copies it to your system clipboard.
 # Works both locally (via xclip) and over SSH (via OSC 52 escape sequence).
 
-CONTENT=$(tac /tmp/my-tmux-capture.txt | awk '/~/{++n; next} n==1' | tac | head -n -1)
+# Regex pattern matching your shell prompt lines. The script uses this to find
+# the boundaries between command outputs in the tmux scrollback.
+#
+# Currently matches:
+#   - Lines starting with ~ (Mac starship prompt, e.g. "~/trunk/1/xai on  main")
+#   - Lines containing " ∫ " or " ⌘ " (remote vi-mode prompt via inputrc, e.g. "INS ∫ root in ...")
+#
+# Extend this pattern if you add new machines / prompt styles.
+PROMPT_PATTERN='^~| ∫ | ⌘ '
+
+# Extract the output of the last command from the tmux capture.
+# Algorithm: reverse the file, skip lines matching the prompt pattern, print
+# lines between the most recent prompt (current) and the one before it (the
+# command that produced the output), then re-reverse to restore order.
+CONTENT=$(tac /tmp/my-tmux-capture.txt \
+    | awk -v pat="$PROMPT_PATTERN" '$0 ~ pat {++n; next} n==1' \
+    | tac \
+    | head -n -1)
 
 # Remove trailing newline for cleaner clipboard content
 CONTENT=$(printf '%s' "$CONTENT")
